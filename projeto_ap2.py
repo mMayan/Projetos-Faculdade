@@ -1,3 +1,13 @@
+"""
+este código pede que o usuário digite alturas variadas e ao final mostra na tela
+a menor e maior altura digitada, a média das alturas, e quantas alturas são menores que a média
+
+considerações finais: eu gostei muito de fazer esse código pois no processo eu descobri uma nova forma
+de parar um loop infinito: usando o try/except, antes eu usava uma combinação de input/if/else, que era
+incoveniente e repetitiva, esse novo método vou levar para minha vida até encontrar outro método mais eficiente
+
+"""
+
 cont = 0
 greater = float('-inf')
 lesser = float('inf')
