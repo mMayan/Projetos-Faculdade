@@ -8,52 +8,52 @@ variáveis globais
 
                                         """
 
+saldo_cliente = 0
+tipo_cliente = 0  
 
-# depositar
-# sacar
-# imprimir saldo
 def depositar():
-    global ask_money
-
-    ask_money = int(input("quanto você deseja depositar? "))
-    ask_money = ask_money + cliente_cadastro
-
+    global saldo_cliente
+    valor = int(input("Quanto você deseja depositar? "))
+    saldo_cliente += valor
+    print("depósito feito com sucesso!")
 
 def sacar():
-    pass
+    global saldo_cliente
+    valor_saque = int(input("Quanto você deseja sacar? "))
+    if valor_saque <= saldo_cliente:
+        saldo_cliente -= valor_saque
+        print("Saque efetuado com sucesso.")
+    else:
+        print("Saldo insuficiente.")
 
 def imprimir_saldo():
-    pass
-
+    print(f'O saldo atual é de: R${saldo_cliente}\n')
 
 def main():
-    global cliente_cadastro
+    global saldo_cliente, tipo_cliente
+
     while True:
         ask = int(input("1 - cadastrar cliente\n2 - depositar\n3 - sacar\n4 - imprimir saldo\n5 - sair\n"))
 
         if ask == 1:
-            nome = str(input("digite o nome do cliente: "))
-            cpf = str(input("digite o cpf do cliente: "))
-        
-            cliente_cadastro = int(input("qual o tipo o cliente? 1 - normal, 2 - especial: "))
-            # normal: 100R$
-            # especial: 200R$
-            if cliente_cadastro == 1:
-                cliente_cadastro = 100
+            nome = str(input("Digite o nome do cliente: "))
+            cpf = str(input("Digite o CPF do cliente: "))
+            tipo_cliente = int(input("Qual o tipo do cliente? 1 - normal, 2 - especial: "))
+            
+            if tipo_cliente == 1:
+                saldo_cliente = 100
+            elif tipo_cliente == 2:
+                saldo_cliente = 200
 
-            elif cliente_cadastro == 2:
-                cliente_cadastro = 200
-    
         elif ask == 2:
             depositar()
         elif ask == 3:
             sacar()
         elif ask == 4:
+            print(f'nome do cliente: {nome}')
+            print(f'cpf: {cpf}')
             imprimir_saldo()
         else:
             break
-        print(cliente_cadastro)
-        print(nome)
-        #print(cpf)
-        print(ask_money)
+
 main()
